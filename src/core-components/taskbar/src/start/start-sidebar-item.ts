@@ -1,8 +1,5 @@
 import { h, ref } from 'vue'
 
-import logout from '../../../../temp/logout/logout'
-import Array from '/@/utils/src/array'
-
 const componentName = 'f-taskbar-start-sidebar-item'
 
 export default {

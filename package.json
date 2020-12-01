@@ -13,10 +13,9 @@
     "build": "vite build --base="
   },
   "dependencies": {
-    "js-cookie": "^2.2.1",
+    "fupin-vue-core": "^0.0.1",
     "moment": "^2.29.1",
-    "vue": "^3.0.0",
-    "fupin-vue-core": "^0.0.1"
+    "vue": "^3.0.0"
   },
   "devDependencies": {
     "@vue/compiler-sfc": "^3.0.0",

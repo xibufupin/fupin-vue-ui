@@ -1,4 +1,4 @@
-import { h, inject, watch, watchEffect } from 'vue'
+import { h } from 'vue'
 
 import windowHeader from './window-header'
 import windowMenu from './window-menu'

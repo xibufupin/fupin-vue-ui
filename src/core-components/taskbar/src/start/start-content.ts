@@ -1,7 +1,5 @@
 import { h } from 'vue'
 
-import logout from '../../../../temp/logout/logout'
-
 const componentName = 'f-taskbar-start-content'
 
 export default {

@@ -1,9 +1,8 @@
-import { h, ref, computed, watchEffect, getCurrentInstance } from 'vue'
+import { h, ref, watchEffect } from 'vue'
 
 import moment from 'moment';
 
 import useMouseEvent from '../../../../compositions/useMouseEvent'
-// import useMoment from '../../../../compositions/useMoment'
 
 const componentName = 'f-taskbar-datetime'
 
@@ -11,7 +10,6 @@ export default {
     name: componentName,
     setup() {
         let { mouseEvent } = useMouseEvent();
-        // let { moment } = useMoment();
 
         let isHover = ref(false);
         let isOpen = ref(false);

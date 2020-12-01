@@ -1,4 +1,4 @@
-import { reactive, ref, h, watch, watchEffect } from 'vue'
+import { reactive, h, watchEffect } from 'vue'
 
 import useMouseEvent from '../../../compositions/useMouseEvent'
 
