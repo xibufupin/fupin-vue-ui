@@ -7,7 +7,7 @@
     "type": "git",
     "url": "git+https://github.com/xibufupin/fupin-vue-ui.git"
   },
-  "license": "GPL",
+  "license": "GPL-3.0-or-later",
   "scripts": {
     "dev": "vite",
     "build": "vite build --base="
