@@ -3,7 +3,6 @@
 </template>
 <script>
 	export default {
-		components: {},
 		computed: {
 			core() {
 				return this.$core;

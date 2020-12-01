@@ -13,7 +13,7 @@
     "build": "vite build --base="
   },
   "dependencies": {
-    "fupin-vue-core": "^0.0.1",
+    "fupin-vue-core": "^0.0.5",
     "moment": "^2.29.1",
     "vue": "^3.0.0"
   },
