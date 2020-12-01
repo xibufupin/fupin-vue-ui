@@ -1,5 +1,4 @@
-import mouseEvent from 'Fui/models/mouseEvent';
-import { h, watchEffect, ref, reactive } from 'vue'
+import { h, watchEffect, reactive } from 'vue'
 
 import useMouseEvent from '../../../compositions/useMouseEvent'
 

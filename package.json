@@ -2,7 +2,7 @@
   "name": "fupin-vue-ui",
   "version": "0.0.1",
   "description": "",
-  "entrypoint": "src/index.ts",
+  "main": "src/index.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xibufupin/fupin-vue-ui.git"

@@ -1,5 +1,4 @@
-import task from 'Fui/core-components/taskbar/src/task/task'
-import { h, reactive, provide, watchEffect, ref, computed, getCurrentInstance } from 'vue'
+import { h, provide } from 'vue'
 
 import mouseEvent from '../../../models/mouseEvent'
 
