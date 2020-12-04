@@ -71,7 +71,7 @@ export default {
             }
         }, [
             h(startSidebarItem, { icon: this.$variable.get("userinfo.avatar"), title: this.$variable.get("userinfo.username") }),
-            h(startSidebarItem, { icon: this.$resource.windows.base.power, title: '退出登录', click: ()=>{this.$core.clear()} }),
+            h(startSidebarItem, { icon: this.$resource.windows.base.power, title: '退出登录', click: ()=>{ this.isHover.value ? this.$core.clear() : ''} }),
         ])
         )
     }
