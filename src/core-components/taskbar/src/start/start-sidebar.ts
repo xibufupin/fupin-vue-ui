@@ -66,12 +66,12 @@ export default {
                 justifyContent: "flex-end",
                 alignItems: 'flex-start',
                 overflow: 'hidden',
-                background:  this.isHover ? 'rgba(48, 48, 48, .95)' : 'unset',
+                background: this.isHover ? 'rgba(48, 48, 48, .95)' : 'unset',
                 transition: 'background .1s'
             }
         }, [
             h(startSidebarItem, { icon: this.$variable.get("userinfo.avatar"), title: this.$variable.get("userinfo.username") }),
-            h(startSidebarItem, { icon: this.$resource.windows.base.power, title: '退出登录', click: ()=>{ this.isHover.value ? this.$core.clear() : ''} }),
+            h(startSidebarItem, { icon: this.$resource.windows.base.power, title: '退出登录', click: () => this.$core.clear() }),
         ])
         )
     }
