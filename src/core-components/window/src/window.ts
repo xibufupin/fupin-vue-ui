@@ -1,4 +1,4 @@
-import { h } from 'vue'
+import { h, provide } from 'vue'
 
 import windowHeader from './window-header'
 import windowMenu from './window-menu'
@@ -16,14 +16,14 @@ export default {
             required: true
         }
     },
-    setup() {
-        let handleFixed = () => {
-            console.log('im fixed');
-            return true;
-        }
+    setup(props) {
+        provide("instance", props.instance);
 
         return {
-            handleFixed
+            handleFixed: () => {
+                console.log('im fixed');
+                return true;
+            }
         }
     },
     render() {
