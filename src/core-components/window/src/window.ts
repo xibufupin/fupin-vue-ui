@@ -29,7 +29,7 @@ export default {
     render() {
         let inner = [
             h(windowHeader, { instance: this.instance }),
-            // h(windowMenu, { instance: this.instance }),
+            h(windowMenu, { instance: this.instance }),
             h(windowContent, { instance: this.instance }),
             h(windowFooter, { instance: this.instance }),
             h(windowDragger, { instance: this.instance }),
@@ -41,7 +41,7 @@ export default {
         //     ]
         // }
 
-        return this.instance.isWindow ? h("div", {
+        return this.instance.showWindow ? h("div", {
             id: `${componentName}-${this.instance.pid}`,
             onClick: this.instance.active,
             style: {
@@ -65,7 +65,13 @@ export default {
                 zIndex: this.instance.layer,
                 pointerEvents: this.instance.isLockPointerEvents ? 'none' : 'unset',
             }
-        }, inner) : h(this.instance.component, { instance: this.instance });
+        }, [
+            this.instance.showHeader ? h(windowHeader, { instance: this.instance }) : "",
+            h(windowMenu, { instance: this.instance }),
+            h(windowContent, { instance: this.instance }),
+            this.instance.showFooter ? h(windowFooter, { instance: this.instance }) : "",
+            h(windowDragger, { instance: this.instance }),
+        ]) : h(this.instance.component, { instance: this.instance });
     },
     created() {
         // console.log(this.instance);

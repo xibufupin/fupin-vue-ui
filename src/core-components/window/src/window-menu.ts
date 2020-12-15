@@ -14,6 +14,8 @@ export default {
         
     },
     render() {
+        // TODO 需要完成menu逻辑
+        return ""
         return h("div", {
             id: `${componentName}-${this.instance.pid}`,
             style: {
