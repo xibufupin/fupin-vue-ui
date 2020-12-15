@@ -8,15 +8,15 @@ export default ({
     name: componentName,
 
     render() {
-        let commands = this.$module.getCommands();
+        let modules = this.$module.gets();
         let list = [];
 
-        Object.keys(commands).map((value, key) => {
-            if (commands[value].option.shortcut) {
+        Object.keys(modules).map((value, key) => {
+            if (modules[value].option.shortcut) {
                 list.push({
                     command: value,
-                    title: commands[value].option.title,
-                    icon: commands[value].option.icon
+                    title: modules[value].option.title,
+                    icon: modules[value].option.icon
                 })
             }
         });
