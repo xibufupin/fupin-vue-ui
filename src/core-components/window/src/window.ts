@@ -30,7 +30,7 @@ export default {
         let inner = [
             h(windowHeader, { instance: this.instance }),
             h(windowMenu, { instance: this.instance }),
-            h(windowContent),
+            h(windowContent, { instance: this.instance }),
             h(windowFooter, { instance: this.instance }),
             h(windowDragger, { instance: this.instance }),
         ];
