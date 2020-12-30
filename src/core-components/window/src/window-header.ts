@@ -1,19 +1,15 @@
 import { reactive, h, watchEffect } from 'vue'
 
 import useMouseEvent from '../../../compositions/useMouseEvent'
+import useInstance from '/@/fupin-vue-ui/compositions/useInstance';
 
 const componentName = 'f-window-header'
 
 export default {
     name: componentName,
-    props: {
-        instance: {
-            type: Object,
-            required: true
-        }
-    },
     setup(props) {
         let { mouseEvent } = useMouseEvent();
+        let { instance } = useInstance();
 
         let isHover = reactive({
             minimize: false,
@@ -44,9 +40,9 @@ export default {
         }
 
         let onWindowMoveStart = (e) => {
-            if (!props.instance.allowMove) return;
-            props.instance.active();
-            props.instance.isLockPinterEvents = true;
+            if (!instance.allowMove) return;
+            instance.active();
+            instance.isLockPinterEvents = true;
             initWindowMove({
                 moving: true,
                 startX: e.clientX,
@@ -57,7 +53,7 @@ export default {
         }
 
         let onWindowMoveEnd = (e) => {
-            props.instance.isLockPinterEvents = false;
+            instance.isLockPinterEvents = false;
             initWindowMove();
         }
 
@@ -69,45 +65,46 @@ export default {
                 mouseEvent.clientY <= 0 ||
                 mouseEvent.clientY >= window.innerHeight
             ) {
-                props.instance.isLockPinterEvents = false;
+                instance.isLockPinterEvents = false;
                 initWindowMove();
             }
         })
 
         watchEffect(() => {
-            if (windowMove.moving == true && Math.abs(windowMove.startX - mouseEvent.clientX) > 0 && props.instance.isMaximize) {
+            if (windowMove.moving == true && Math.abs(windowMove.startX - mouseEvent.clientX) > 0 && instance.isMaximize) {
                 let minX = 0;
-                let maxX = window.innerWidth - props.instance.width;
+                let maxX = window.innerWidth - instance.width;
 
-                if (mouseEvent.clientX < props.instance.width - 135) {
-                    props.instance.x = minX;
+                if (mouseEvent.clientX < instance.width - 135) {
+                    instance.x = minX;
                 } else if (mouseEvent.clientX > maxX) {
-                    props.instance.x = maxX
+                    instance.x = maxX
                 } else {
-                    props.instance.x = mouseEvent.clientX - props.instance.width / 2
+                    instance.x = mouseEvent.clientX - instance.width / 2
                 }
 
-                props.instance.y = mouseEvent.clientY - mouseEvent.offsetY;
-                props.instance.unMaximize();
+                instance.y = mouseEvent.clientY - mouseEvent.offsetY;
+                instance.unMaximize();
             }
         })
 
         let destory = (e) => {
             e.stopPropagation();
-            props.instance.destory();
+            instance.destory();
         }
 
         watchEffect(() => {
-            if (!windowMove.moving || props.instance.isMaximize) {
+            if (!windowMove.moving || instance.isMaximize) {
                 return;
             }
-            props.instance.x = props.instance.x + mouseEvent.clientX - windowMove.startX;
-            props.instance.y = props.instance.y + mouseEvent.clientY - windowMove.startY;
+            instance.x = instance.x + mouseEvent.clientX - windowMove.startX;
+            instance.y = instance.y + mouseEvent.clientY - windowMove.startY;
             windowMove.startX = mouseEvent.clientX;
             windowMove.startY = mouseEvent.clientY;
         })
 
         return {
+            instance,
             isHover,
             onMouseEnterActionIcon,
             onMouseLeaveActionIcon,

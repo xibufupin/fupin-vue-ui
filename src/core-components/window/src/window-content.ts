@@ -1,17 +1,16 @@
 import { h } from 'vue'
 
+import useInstance from '../../../compositions/useInstance'
+
 const componentName = 'f-window-content'
 
 export default {
     name: componentName,
-    props: {
-        instance: {
-            type: Object,
-            required: true
-        }
-    },
     setup() {
-
+        let { instance } = useInstance();
+        return {
+            instance
+        }
     },
     render() {
         return h("div", {

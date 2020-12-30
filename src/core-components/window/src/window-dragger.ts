@@ -1,19 +1,15 @@
 import { h, watchEffect, reactive } from 'vue'
 
 import useMouseEvent from '../../../compositions/useMouseEvent'
+import useInstance from '/@/fupin-vue-ui/compositions/useInstance';
 
 const componentName = 'f-dragger'
 
 export default {
     name: componentName,
-    props: {
-        instance: {
-            type: Object,
-            required: true
-        }
-    },
     setup(props, context) {
         let { mouseEvent } = useMouseEvent();
+        let { instance } = useInstance();
 
         let dragger: any = reactive({})
 
@@ -35,10 +31,10 @@ export default {
                 direction,
                 offsetX: e.offsetX,
                 offsetY: e.offsetY,
-                top: props.instance.top,
-                bottom: props.instance.bottom,
-                left: props.instance.left,
-                right: props.instance.right
+                top: instance.top,
+                bottom: instance.bottom,
+                left: instance.left,
+                right: instance.right
             });
         }
 
@@ -66,47 +62,48 @@ export default {
             if (dragger.direction.indexOf("top") != -1) {
                 let y = mouseEvent.clientY - dragger.offsetY + 4;
                 if (
-                    window.innerHeight - dragger.bottom - props.instance.minHeight > y &&
-                    window.innerHeight - dragger.bottom - props.instance.maxHeight < y
+                    window.innerHeight - dragger.bottom - instance.minHeight > y &&
+                    window.innerHeight - dragger.bottom - instance.maxHeight < y
                 ) {
-                    props.instance.y = y;
+                    instance.y = y;
                 }
-                props.instance.height = window.innerHeight - props.instance.y - dragger.bottom;
+                instance.height = window.innerHeight - instance.y - dragger.bottom;
             }
 
             // BOTTOM
             if (dragger.direction.indexOf("bottom") != -1) {
-                console.log("bottom");
+                // console.log("bottom");
                 let offset = 1;
                 if (dragger.direction.indexOf("left") != -1) offset += 5;
                 if (dragger.direction.indexOf("right") != -1) offset += 5;
-                props.instance.height = mouseEvent.clientY - props.instance.y - dragger.offsetY + offset;
+                instance.height = mouseEvent.clientY - instance.y - dragger.offsetY + offset;
             }
 
             //LEFT
             if (dragger.direction.indexOf("left") != -1) {
-                console.log('left');
+                // console.log('left');
                 let x = mouseEvent.clientX - dragger.offsetX + 4;
                 if (
-                    window.innerWidth - dragger.right - props.instance.minWidth > x &&
-                    window.innerWidth - dragger.right - props.instance.maxWidth < x
+                    window.innerWidth - dragger.right - instance.minWidth > x &&
+                    window.innerWidth - dragger.right - instance.maxWidth < x
                 ) {
-                    props.instance.x = x;
+                    instance.x = x;
                 }
-                props.instance.width = window.innerWidth - props.instance.x - dragger.right;
+                instance.width = window.innerWidth - instance.x - dragger.right;
             }
 
             //RIGHT
             if (dragger.direction.indexOf("right") != -1) {
-                console.log('right');
+                // console.log('right');
                 let offset = 1;
                 if (dragger.direction.indexOf("top") != -1) offset += 5;
                 if (dragger.direction.indexOf("bottom") != -1) offset += 5;
-                props.instance.width = mouseEvent.clientX - props.instance.x - dragger.offsetX + offset;
+                instance.width = mouseEvent.clientX - instance.x - dragger.offsetX + offset;
             }
         })
         return {
             mouseEvent,
+            instance,
             dragger,
 
             onWindowResizeStart,
@@ -253,6 +250,6 @@ export default {
         ];
     },
     created() {
-        // console.log(this.instance);
+        console.log(this.instance);
     }
 }

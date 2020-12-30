@@ -4,12 +4,6 @@ const componentName = 'f-window-menu'
 
 export default {
     name: componentName,
-    props: {
-        instance: {
-            type: Object,
-            required: true
-        }
-    },
     setup() {
         
     },

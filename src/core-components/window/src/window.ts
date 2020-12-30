@@ -21,23 +21,23 @@ export default {
 
         return {
             handleFixed: () => {
-                console.log('im fixed');
+                // console.log('im fixed');
                 return true;
             }
         }
     },
     render() {
         let inner = [
-            h(windowHeader, { instance: this.instance }),
-            h(windowMenu, { instance: this.instance }),
-            h(windowContent, { instance: this.instance }),
-            h(windowFooter, { instance: this.instance }),
-            h(windowDragger, { instance: this.instance }),
+            h(windowHeader),
+            h(windowMenu),
+            h(windowContent),
+            h(windowFooter),
+            h(windowDragger),
         ];
 
         // if (!this.instance.isWindow) {
         //     inner = [
-        //         h(windowContent, { instance: this.instance }),
+        //         h(windowContent),
         //     ]
         // }
 
@@ -66,12 +66,12 @@ export default {
                 pointerEvents: this.instance.isLockPointerEvents ? 'none' : 'unset',
             }
         }, [
-            this.instance.showHeader ? h(windowHeader, { instance: this.instance }) : "",
-            h(windowMenu, { instance: this.instance }),
-            h(windowContent, { instance: this.instance }),
-            this.instance.showFooter ? h(windowFooter, { instance: this.instance }) : "",
-            h(windowDragger, { instance: this.instance }),
-        ]) : h(this.instance.component, { instance: this.instance });
+            this.instance.showHeader ? h(windowHeader) : "",
+            h(windowMenu),
+            h(windowContent),
+            this.instance.showFooter ? h(windowFooter) : "",
+            h(windowDragger),
+        ]) : h(this.instance.component);
     },
     created() {
         // console.log(this.instance);
