@@ -250,6 +250,6 @@ export default {
         ];
     },
     created() {
-        console.log(this.instance);
+        // console.log(this.instance);
     }
 }
