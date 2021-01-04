@@ -142,6 +142,7 @@ export default {
                 onMouseDown: this.onWindowMoveStart,
                 onMouseUp: this.onWindowMoveEnd,
                 style: {
+                    color: '#000',
                     padding: '0 0 0 6px',
                     whiteSpace: 'nowrap',
                     textOverflow: 'ellipsis',
