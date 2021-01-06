@@ -1,6 +1,9 @@
 import { h, provide } from 'vue'
 
 import mouseEvent from '../../../models/mouseEvent'
+import keyboardEvent from '../../../models/keyboardEvent'
+import keyboard from '../../../models/keyboard'
+import simpleKeyboard from '../../../models/simpleKeyboard'
 
 import desktop from '../../desktop/src/desktop'
 import taskbar from '../../taskbar/src/taskbar'
@@ -19,6 +22,42 @@ export default {
 			})
 		}
 		provide("$mouseEvent", mouseEventModel)
+
+		let { keyboardEventModel } = keyboardEvent();
+		let { keyboardModel } = keyboard();
+		let { simpleKeyboardModel } = simpleKeyboard();
+		let handleKeybaordEvent = (e) => {
+			console.log(e);
+			if (!(e.key == 'F5' || e.key == 'F12')) {
+				e.preventDefault();
+			}
+			// 更新keyboardEvent
+			Object.keys(keyboardEventModel).map((value, key) => {
+				keyboardEventModel[value] = e[value]
+			})
+
+			// 更新keyboardModel和simpleKeyboardModel
+			if (e.type == 'keydown' || e.type == 'keypress') {
+				keyboardModel[e.code] = true;
+				if (typeof simpleKeyboardModel[e.key.toLowerCase()] != 'undefined') {
+					simpleKeyboardModel[e.key.toLowerCase()] = true;
+				}
+			}
+
+			// 更新keyboardModel和simpleKeyboardModel
+			if (e.type == 'keyup') {
+				keyboardModel[e.code] = false;
+				if (typeof simpleKeyboardModel[e.key.toLowerCase()] != 'undefined') {
+					simpleKeyboardModel[e.key.toLowerCase()] = false;
+				}
+			}
+		}
+		document.addEventListener("keydown", handleKeybaordEvent);
+		document.addEventListener("keypress", handleKeybaordEvent);
+		document.addEventListener("keyup", handleKeybaordEvent);
+		provide("$keyboardEvent", keyboardEventModel)
+		provide("$keyboard", keyboardModel)
+		provide("$simpleKeyboard", simpleKeyboardModel)
 
 		return {
 			handleMouseEvent,
