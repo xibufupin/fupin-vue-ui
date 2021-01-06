@@ -27,7 +27,6 @@ export default {
 		let { keyboardModel } = keyboard();
 		let { simpleKeyboardModel } = simpleKeyboard();
 		let handleKeybaordEvent = (e) => {
-			console.log(e);
 			if (!(e.key == 'F5' || e.key == 'F12')) {
 				e.preventDefault();
 			}
