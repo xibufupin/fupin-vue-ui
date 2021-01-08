@@ -1,12 +1,10 @@
 import { h } from 'vue'
-import instanceMinxin from '../../../../mixins/instance'
-import useInstance from '/@/fupin-vue-ui/compositions/useInstance'
+import useInstance from '../../../compositions/useInstance'
 
 const componentName = 'f-window-footer'
 
 export default {
     name: componentName,
-    mixins: [instanceMinxin],
     setup() {
         let { instance } = useInstance();
         return {
