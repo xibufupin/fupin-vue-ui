@@ -14,6 +14,7 @@ export default {
     render() {
         return h("div", {
             id: `${componentName}-${this.instance.pid}`,
+            class: componentName,
             style: {
                 height: '24px',
                 lineHeight: '24px',
