@@ -43,6 +43,7 @@ export default {
 
         return this.instance.showWindow ? h("div", {
             id: `${componentName}-${this.instance.pid}`,
+            class: [componentName, this.instance.isActive ? 'active' : 'inActive'],
             onClick: this.instance.active,
             style: {
                 position: 'fixed',
@@ -50,7 +51,7 @@ export default {
                 display: this.instance.isMinimize ? 'none' : 'flex',
                 flexDirection: 'column',
                 background: '#fff',
-                border: this.instance.isMaximize ? 'unset' : this.instance.isActive ? '1px solid rgba(194, 194, 194, 0)' : '1px solid #1883d7',
+                border: this.instance.isMaximize ? 'unset' : this.instance.isActive ? '1px solid rgba(255, 255, 255, 0)' : '1px solid rgb(166, 160, 153)',
                 boxShadow: this.instance.isMaximize ? 'unset' : this.instance.isActive ? '0 0 20px rgba(0, 0, 0, .5)' : '0 0 20px rgba(0, 0, 0, .3)',
 
                 top: `${this.instance.top}px`,

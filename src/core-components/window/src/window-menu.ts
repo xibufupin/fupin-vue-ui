@@ -12,6 +12,7 @@ export default {
         return ""
         return h("div", {
             id: `${componentName}-${this.instance.pid}`,
+            class: componentName,
             style: {
                 backgroundColor: '#0f0'
             }

@@ -116,6 +116,7 @@ export default {
     render() {
         return h("div", {
             id: `${componentName}-${this.instance.pid}`,
+            class: componentName,
             onDblclick: () => this.instance.isMaximize ? this.instance.unMaximize() : this.instance.maximize(),
             style: {
                 height: '30px',
