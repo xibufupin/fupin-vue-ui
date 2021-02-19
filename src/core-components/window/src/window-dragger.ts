@@ -1,7 +1,7 @@
 import { h, watchEffect, reactive } from 'vue'
 
 import useMouseEvent from '../../../compositions/useMouseEvent'
-import useInstance from '/@/fupin-vue-ui/compositions/useInstance';
+import useInstance from '../../../compositions/useInstance';
 
 const componentName = 'f-dragger'
 
