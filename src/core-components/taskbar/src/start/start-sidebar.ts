@@ -70,7 +70,7 @@ export default {
                 transition: 'background .1s'
             }
         }, [
-            h(startSidebarItem, { icon: this.$variable.get("userinfo.avatar"), title: this.$variable.get("userinfo.username") }),
+            h(startSidebarItem, { icon: this.$variable.get("profile.avatar"), title: this.$variable.get("profile.username") }),
             h(startSidebarItem, { icon: this.$resource.windows.base.power, title: '退出登录', click: () => this.$core.clear() }),
         ])
         )
