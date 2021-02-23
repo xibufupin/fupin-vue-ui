@@ -48,7 +48,6 @@ export default {
         }
     },
     render() {
-        // console.log(this.menu);
         return h("div", {
             id: componentName,
             onMouseEnter: this.onMouseEnter,

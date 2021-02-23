@@ -72,7 +72,6 @@ export default {
 
             // BOTTOM
             if (dragger.direction.indexOf("bottom") != -1) {
-                // console.log("bottom");
                 let offset = 1;
                 if (dragger.direction.indexOf("left") != -1) offset += 5;
                 if (dragger.direction.indexOf("right") != -1) offset += 5;
@@ -81,7 +80,6 @@ export default {
 
             //LEFT
             if (dragger.direction.indexOf("left") != -1) {
-                // console.log('left');
                 let x = mouseEvent.clientX - dragger.offsetX + 4;
                 if (
                     window.innerWidth - dragger.right - instance.minWidth > x &&
@@ -94,7 +92,6 @@ export default {
 
             //RIGHT
             if (dragger.direction.indexOf("right") != -1) {
-                // console.log('right');
                 let offset = 1;
                 if (dragger.direction.indexOf("top") != -1) offset += 5;
                 if (dragger.direction.indexOf("bottom") != -1) offset += 5;
@@ -250,6 +247,5 @@ export default {
         ];
     },
     created() {
-        // console.log(this.instance);
     }
 }

@@ -21,7 +21,6 @@ export default {
 
         return {
             handleFixed: () => {
-                // console.log('im fixed');
                 return true;
             }
         }
@@ -75,6 +74,5 @@ export default {
         ]) : h(this.instance.component);
     },
     created() {
-        // console.log(this.instance);
     }
 }
