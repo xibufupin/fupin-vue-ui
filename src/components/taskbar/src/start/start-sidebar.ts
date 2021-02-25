@@ -1,4 +1,4 @@
-import { h, ref } from 'vue'
+import { h, ref, inject } from 'vue'
 
 import startSidebarItem from './start-sidebar-item'
 
@@ -32,12 +32,16 @@ export default {
             e.stopPropagation()
         }
 
+        let onClickIcon: any = inject("onClickIcon");
+
         return {
             isHover,
 
             onMouseEnter,
             onMouseLeave,
-            stopPropagation
+            stopPropagation,
+
+            onClickIcon
         }
     },
     render() {
@@ -70,7 +74,7 @@ export default {
                 transition: 'background .1s'
             }
         }, [
-            h(startSidebarItem, { icon: this.$variable.get("profile.avatar"), title: this.$variable.get("profile.username") }),
+            this.$config.core.profile?.enabled ? h(startSidebarItem, { icon: this.$variable.get(this.$config.core.profile?.avatar), title: this.$variable.get(this.$config.core.profile?.username), click: () => {this.$process.create(this.$config.core.profile?.command); this.onClickIcon()} }) : null,
             h(startSidebarItem, { icon: this.$resource.windows.base.power, title: '退出登录', click: () => this.$core.clear() }),
         ])
         )

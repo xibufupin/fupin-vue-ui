@@ -1,4 +1,4 @@
-import { h, ref, watchEffect } from 'vue'
+import { h, ref, provide, watchEffect } from 'vue'
 
 import useMouseEvent from '../../../../compositions/useMouseEvent'
 
@@ -29,6 +29,8 @@ export default {
         let stopPropagation = (e) => {
             e.stopPropagation()
         }
+
+        provide("onClickIcon", onClickIcon),
 
         watchEffect(() => {
             if (mouseEvent.type == 'mousedown') {
