@@ -2,8 +2,8 @@ import { App } from 'vue'
 
 import Resource from './resource'
 
-import screen from './core-components/screen/src/screen'
-import debuggerView from './core-components/debugger-view/src/debugger-view'
+import screen from './components/screen/src/screen'
+import debuggerView from './components/debugger-view/src/debugger-view'
 
 export default class Fui {
 
